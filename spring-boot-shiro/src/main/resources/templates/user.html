@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="UTF-8">
+    <title>用户信息</title>
+</head>
+<body>
+<h1>用户管理</h1>
+<table border="1" style="width: 300px">
+    <tr>
+        <th>用户ID</th>
+        <th>用户姓名</th>
+        <th>用户真实姓名</th>
+    </tr>
+    <tr th:each="user:${list}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.realname}"></td>
+    </tr>
+</table>
+<hr>
+    <shiro:authenticated>
+        已登录<br>
+    </shiro:authenticated>
+    <span shiro:hasRole="role1">权限Role1</span><br>
+    <span shiro:hasRole="role2">权限Role2</span><br>
+    <shiro:guest>游客</shiro:guest>
+</body>
+</html>
